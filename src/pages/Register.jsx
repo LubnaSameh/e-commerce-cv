@@ -1,8 +1,11 @@
 import React from 'react';
+import { Footer, Navbar } from '../components';
 
 const Register = () => {
   return (
-    <div className="d-flex align-items-center justify-content-center bg-light">
+    <>
+   <Navbar/>
+    <div className="d-flex align-items-center justify-content-center ">
       <div className="container my-4">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-8 col-md-6 col-lg-4">         
@@ -65,6 +68,8 @@ const Register = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

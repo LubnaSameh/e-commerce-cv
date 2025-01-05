@@ -143,11 +143,24 @@ const ProductDetails = () => {
                       <i className="bi bi-cart-plus me-2"></i>Buy Now
                     </Link>
                     <button
-                      className="btn btn-sm btn-outline-secondary"
-                      onClick={() => dispatch(addItem(item))}
-                    >
-                      Add to Cart
-                    </button>
+  className="btn btn-sm btn-outline-secondary"
+  onClick={() => {
+    dispatch(addItem(item)); // ده شغال
+    toast.success(`${item.title || 'Item'} added to cart!`, {
+      duration: 3000,
+      style: {
+        border: "1px solid #4caf50",
+        padding: "16px",
+        color: "#333",
+        borderRadius: "8px",
+        backgroundColor: "#d4edda",
+      },
+    });
+  }}
+>
+  Add to Cart
+</button>
+
                   </div>
                 </div>
               </div>

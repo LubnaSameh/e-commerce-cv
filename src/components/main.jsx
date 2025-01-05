@@ -21,7 +21,7 @@ const Main = () => {
       ></div>
 
       {/* النص */}
-      <div className="px-5 mx-5 text-start position-relative" style={{ zIndex: 2 }}>
+      <div className="px-3 px-md-5 mx-md-5   text-start position-relative" style={{ zIndex: 2 }}>
         <h1 className="display-4 fw-bold">Welcome to our store</h1>
         <p className="lead mt-3 fw-bold ">
           Welcome to our store! Discover an extensive collection of premium
