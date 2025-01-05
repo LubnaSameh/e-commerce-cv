@@ -16,7 +16,8 @@ import { // name of function
   CartPage,
   CheckoutPage,
   AboutPage,
-  ContactPage   
+  ContactPage,
+  PageNotFound   
 } from "./pages";
 import { Toaster } from "react-hot-toast";
 
@@ -34,8 +35,8 @@ const App = () => {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/ContactUs" element={<ContactPage />} />
-
-        {/* <Route path="*" element={<PageNotFound />} /> */}
+        <Route path="*" element={<PageNotFound />} />
+      
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
     </BrowserRouter>

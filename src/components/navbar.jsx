@@ -24,7 +24,7 @@ const Navbar = () => {
   aria-controls="navbarNav"
   aria-expanded="false"
   aria-label="Toggle navigation"
-  style={{ borderColor: "white" }} // تغيير لون الحدود إلى الأبيض
+  style={{ borderColor: "white" }} 
 >
   <span
     className="navbar-toggler-icon"

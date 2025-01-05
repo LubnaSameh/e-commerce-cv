@@ -5,22 +5,22 @@ const Main = () => {
     <div
       className="position-relative bg-dark text-white text-center d-flex align-items-center justify-content-start"
       style={{
-        backgroundImage: "url('/images/215311.jpg')", // مسار الصورة
+        backgroundImage: "url('/images/215311.jpg')", 
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "86vh",
       }}
     >
-      {/* Overlay */}
+    
       <div
         className="position-absolute top-0 start-0 w-100 h-100"
         style={{
           backgroundColor: "rgba(0, 0, 0, 0.09)",
-          zIndex: 1, // يجعل التراكب تحت النص
+          zIndex: 1, 
         }}
       ></div>
 
-      {/* النص */}
+     
       <div className="px-3 px-md-5 mx-md-5   text-start position-relative" style={{ zIndex: 2 }}>
         <h1 className="display-4 fw-bold">Welcome to our store</h1>
         <p className="lead mt-3 fw-bold ">
