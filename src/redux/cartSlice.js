@@ -1,16 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-// استرجاع البيانات من localStorage
+// Retrieve data from localStorage
 const initialCartState = {
-  items: JSON.parse(localStorage.getItem('cartItems')) || [],
-  totalQuantity: JSON.parse(localStorage.getItem('totalQuantity')) || 0,
+  items: JSON.parse(localStorage.getItem("cartItems")) || [],
+  totalQuantity: Math.max(0, JSON.parse(localStorage.getItem("totalQuantity")) || 0), // Ensure non-negative
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState: initialCartState,
   reducers: {
-    // إضافة عنصر للكارت
+    // Add an item to the cart
     addItem(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
@@ -21,12 +21,12 @@ const cartSlice = createSlice({
       }
       state.totalQuantity += 1;
 
-      // تحديث localStorage
-      localStorage.setItem('cartItems', JSON.stringify(state.items));
-      localStorage.setItem('totalQuantity', JSON.stringify(state.totalQuantity));
+      // Update localStorage
+      localStorage.setItem("cartItems", JSON.stringify(state.items));
+      localStorage.setItem("totalQuantity", JSON.stringify(state.totalQuantity));
     },
 
-    // زيادة كمية عنصر
+    // Increment quantity of an item
     incrementQuantity(state, action) {
       const id = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
@@ -34,47 +34,48 @@ const cartSlice = createSlice({
         existingItem.quantity += 1;
         state.totalQuantity += 1;
 
-        // تحديث localStorage
-        localStorage.setItem('cartItems', JSON.stringify(state.items));
-        localStorage.setItem('totalQuantity', JSON.stringify(state.totalQuantity));
+        // Update localStorage
+        localStorage.setItem("cartItems", JSON.stringify(state.items));
+        localStorage.setItem("totalQuantity", JSON.stringify(state.totalQuantity));
       }
     },
 
-    // تقليل كمية عنصر
+    // Decrement quantity of an item
     decrementQuantity(state, action) {
       const id = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
       if (existingItem && existingItem.quantity > 1) {
         existingItem.quantity -= 1;
-        state.totalQuantity -= 1;
-
-        // تحديث localStorage
-        localStorage.setItem('cartItems', JSON.stringify(state.items));
-        localStorage.setItem('totalQuantity', JSON.stringify(state.totalQuantity));
+        if (state.totalQuantity > 0) {
+          state.totalQuantity -= 1;
+        }
       } else if (existingItem && existingItem.quantity === 1) {
         state.items = state.items.filter((item) => item.id !== id);
-        state.totalQuantity -= 1;
-
-        // تحديث localStorage
-        localStorage.setItem('cartItems', JSON.stringify(state.items));
-        localStorage.setItem('totalQuantity', JSON.stringify(state.totalQuantity));
+        if (state.totalQuantity > 0) {
+          state.totalQuantity -= 1;
+        }
       }
+
+      // Update localStorage
+      localStorage.setItem("cartItems", JSON.stringify(state.items));
+      localStorage.setItem("totalQuantity", JSON.stringify(state.totalQuantity));
     },
 
-    // إعادة تعيين الكارت
+    // Clear the cart
     clearCart(state) {
       state.items = [];
       state.totalQuantity = 0;
 
-      // تحديث localStorage
-      localStorage.removeItem('cartItems');
-      localStorage.removeItem('totalQuantity');
+      // Update localStorage
+      localStorage.removeItem("cartItems");
+      localStorage.removeItem("totalQuantity");
     },
 
-    // تحميل الكارت من localStorage
+    // Load cart from localStorage
     loadCartFromLocalStorage(state) {
-      state.items = JSON.parse(localStorage.getItem('cartItems')) || [];
-      state.totalQuantity = JSON.parse(localStorage.getItem('totalQuantity')) || 0;
+      state.items = JSON.parse(localStorage.getItem("cartItems")) || [];
+      state.totalQuantity =
+        Math.max(0, JSON.parse(localStorage.getItem("totalQuantity")) || 0);
     },
   },
 });

@@ -80,7 +80,7 @@ const Navbar = () => {
             </li>
           </ul>
        
-          <div className="d-flex gap-3">
+          <div className="d-flex gap-3 pt-2 pt-lg-0">
             <NavLink to="/login" className="btn btn-outline-light">
               <i className="bi bi-box-arrow-in-right"></i> Login
             </NavLink>

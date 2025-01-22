@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Main, Products, Footer } from "../components";
+import { Navbar, Main, Products, Footer} from "../components";
 
 function CollectComponents() {
   return (

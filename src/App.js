@@ -4,6 +4,11 @@
 //npm install react-fast-marquee
 //npm install react-redux @reduxjs/toolkit
 //npm install react-hot-toast
+//npm install @emailjs/browser
+
+
+
+
 
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -17,14 +22,14 @@ import { // name of function
   CheckoutPage,
   AboutPage,
   ContactPage,
-  PageNotFound   
+  PageNotFound,
+     
 } from "./pages";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
     <BrowserRouter>
-    
       <Routes>                  {/* name of function */}
         <Route path="/" element={<CollectComponents />} />
         <Route path="/products" element={<ProductsPage />} />
@@ -36,7 +41,6 @@ const App = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/ContactUs" element={<ContactPage />} />
         <Route path="*" element={<PageNotFound />} />
-      
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
     </BrowserRouter>

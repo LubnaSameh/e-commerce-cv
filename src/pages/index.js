@@ -7,7 +7,6 @@ export { default as CartPage } from './CartPage';
 export { default as CheckoutPage } from './CheckoutPage'; 
 export { default as AboutPage } from './About'; // as name of function // from name of file
 export { default as ContactPage } from "./ContactUs";
-
 export { default as PageNotFound } from "./PageNotFound";
 
 
